@@ -11,6 +11,8 @@ Gem::Specification.new do |s|
   s.homepage    = ""
   s.summary     = %q{Helper that coverts number to indian currency with rupees symbol with css}
   s.description = %q{
+  Number to Indian Currency with rupees symbol
+
   Example Usage
   --------------------------------------------------------
   >> number_to_indian_currency(400)
