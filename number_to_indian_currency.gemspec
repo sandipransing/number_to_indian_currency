@@ -10,9 +10,9 @@ Gem::Specification.new do |s|
   s.email       = ["sandip@funonrails.com"]
   s.homepage    = ""
   s.summary     = %q{Helper that coverts number to indian currency with rupees symbol with css}
-  s.description = "Converts number to indian currency with rupee symbol"
-  s.description += "<br/><br/>"
-  s.description += %s{
+  description = "Converts number to indian currency with rupee style"
+  description << "<br/><br/>"
+  description << %{
     Example Usage
     --------------------------------------------------------
     >> number_to_indian_currency(400)
@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
     => "Rs.12,22,040.54"
   }
 
+  s.description = description
   s.rubyforge_project = "number_to_indian_currency"
 
   s.files         = `git ls-files`.split("\n")
