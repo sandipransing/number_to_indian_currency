@@ -9,22 +9,22 @@ module NumberToIndianCurrency
 
   def self.install
     require 'fileutils'
-    orig = File.join(File.dirname(__FILE__), '..', 'public', 'stylesheets')
-    dest = File.join(Rails.root.to_s, 'public', 'stylesheets')
+    orig = File.join(File.dirname(__FILE__), '../public/stylesheets/.')
+    dest = 'public/stylesheets'
     rupees_css = File.join(dest, 'rupees.css')
     unless File.exists?(rupees_css) && FileUtils.identical?(File.join(orig, 'rupees.css'), rupees_css)
       if File.exists?(rupees_css)
         begin
           puts "Removing..."
           FileUtils.rm rupees_css
-          FileUtils.cp_r "#{orig}/.", dest
+          FileUtils.cp_r orig, dest
         rescue Exception => e
           puts e.message
         end
       else
         begin
-          puts "Adding..."
-          FileUtils.cp_r "#{orig}/.", dest
+          puts "Copying #{rupess_css}..."
+          FileUtils.cp_r orig, dest
         rescue Exception => e
           puts e.message
         end
