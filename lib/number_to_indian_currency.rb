@@ -23,7 +23,7 @@ module NumberToIndianCurrency
         end
       else
         begin
-          puts "Copying #{rupess_css}..."
+          puts "Copying #{rupeess_css}..."
           FileUtils.cp_r orig, dest
         rescue Exception => e
           puts e.message
