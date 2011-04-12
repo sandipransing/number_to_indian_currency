@@ -10,21 +10,8 @@ Gem::Specification.new do |s|
   s.email       = ["sandip@funonrails.com"]
   s.homepage    = ""
   s.summary     = %q{Helper that coverts number to indian currency with rupees symbol with css}
-  description = "Converts number to indian currency with rupee style"
-  description << "<br/><br/>"
-  description << %{
-    Example Usage
-    --------------------------------------------------------
-    >> number_to_indian_currency(400)
-    => "<span class="WebRupee">Rs.</span> 400" 
-    >> number_to_indian_currency(5921, false)
-    => "Rs. 5,921" >> helper.number_to_indian_currency(9921)
-    => "<span class="WebRupee">Rs.</span> 9,921"
-    >> number_to_indian_currency(1222040.54, false) 
-    => "Rs.12,22,040.54"
-  }
+  s.description = "Converts number to indian currency with rupee style"
 
-  s.description = description
   s.rubyforge_project = "number_to_indian_currency"
 
   s.files         = `git ls-files`.split("\n")
