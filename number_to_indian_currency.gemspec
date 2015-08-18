@@ -1,21 +1,33 @@
-# -*- encoding: utf-8 -*-
-$:.push File.expand_path("../lib", __FILE__)
-require "number_to_indian_currency/version"
+# coding: utf-8
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'number_to_indian_currency/version'
 
-Gem::Specification.new do |s|
-  s.name        = "number_to_indian_currency"
-  s.version     = NumberToIndianCurrency::VERSION
-  s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Sandip Ransing"]
-  s.email       = ["sandip@funonrails.com"]
-  s.homepage    = ""
-  s.summary     = %q{Helper that coverts number to indian currency with rupees symbol with css}
-  s.description = "Converts number to indian currency with rupee style"
+Gem::Specification.new do |spec|
+  spec.name          = "number_to_indian_currency"
+  spec.version       = NumberToIndianCurrency::VERSION
+  spec.authors       = ["Sandip Ransing"]
+  spec.email         = ["sandip@funonrails.com"]
 
-  s.rubyforge_project = "number_to_indian_currency"
+  spec.summary     		 = %q{Helper that coverts number to indian currency with rupees symbol with css}
+  spec.description 		 = "number_to_indian_currency helper converts given number to the indian currency format (also displays Rupees symbol)"
+  spec.homepage      = "https://github.com/sandipransing/number_to_indian_currency"
+  spec.license       = "MIT"
 
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
-  s.require_paths = ["lib"]
+  # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
+  # delete this section to allow pushing this gem to any host.
+  if spec.respond_to?(:metadata)
+    # spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
+  else
+    raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
+  end
+
+  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+  spec.bindir        = "exe"
+  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.require_paths = ["lib"]
+
+  spec.add_development_dependency "bundler", "~> 1.10"
+  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "minitest"
 end
