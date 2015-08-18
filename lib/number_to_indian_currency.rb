@@ -3,10 +3,13 @@ require "number_to_indian_currency/version"
 module NumberToIndianCurrency
 	def self.initialize
 		return if @intialized
-		raise "ActionView is not available." unless defined?(ActionView)
-		ActionView::Base.send :include, CurrencyHelper
-		NumberToIndianCurrency.install
-		@intialized = true
+		if defined?(ActionView)
+			ActionView::Base.send :include, CurrencyHelper
+			NumberToIndianCurrency.install
+			@intialized = true
+		else
+			puts "ActionView is not available."
+		end
 	end
 
 	def self.install
@@ -35,9 +38,12 @@ module NumberToIndianCurrency
 	end
 
 	module CurrencyHelper
-		def number_to_indian_currency(number, html=true)
-			txt = html ? content_tag(:span, 'Rs.', :class => :WebRupee) : 'Rs.'
-			"#{txt} #{number.to_s.gsub(/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/, "\\1,")}" 
+		def number_to_indian_currency(number, options={})
+			web_rupee = options.fetch(:web_rupee, false)
+			text = options.fetch(:text, 'Rs.')
+			text = content_tag(:span, text, class: :WebRupee) if web_rupee
+			formatted_number = number.to_s.gsub(/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/, "\\1,")
+			return [text, formatted_number].join
 		end
 	end
 end
